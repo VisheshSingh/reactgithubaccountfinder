@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
+import Repos from '../repos/Repos';
 import PropTypes from 'prop-types';
 
 class User extends Component {
@@ -13,7 +14,8 @@ class User extends Component {
     loading: PropTypes.bool,
     getUser: PropTypes.func.isRequired,
     getUserRepos: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    repos: PropTypes.array.isRequired
   };
 
   render() {
@@ -34,7 +36,7 @@ class User extends Component {
     } = this.props.user;
     // console.log(this.props);
 
-    const { loading } = this.props;
+    const { loading, repos } = this.props;
     if (loading) {
       return <Spinner />;
     }
@@ -105,6 +107,7 @@ class User extends Component {
           <div className="badge badge-light">Public Repos: {public_repos}</div>
           <div className="badge badge-dark">Public Gists: {public_gists}</div>
         </div>
+        <Repos repos={repos} />
       </Fragment>
     );
   }
