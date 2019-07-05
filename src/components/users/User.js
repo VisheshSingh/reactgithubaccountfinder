@@ -6,11 +6,13 @@ import PropTypes from 'prop-types';
 class User extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
 
   static propTypes = {
     loading: PropTypes.bool,
     getUser: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired
   };
 
@@ -66,7 +68,7 @@ class User extends Component {
                 <p>{bio}</p>
               </Fragment>
             )}
-            <a href={html_url} target="_blank" className="btn btn-dark my-1">
+            <a href={html_url} className="btn btn-dark my-1">
               visit github profile
             </a>
             <ul>
