@@ -89,7 +89,6 @@ class App extends Component {
 
   render() {
     const { users, loading, alert, user } = this.state;
-    console.log('user:', user);
     return (
       <BrowserRouter>
         <div className="App">
