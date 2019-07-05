@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/layout/Navbar';
+import About from './components/pages/About';
 import Alert from './components/layout/Alert';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
@@ -91,6 +92,7 @@ class App extends Component {
                   </Fragment>
                 )}
               />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
         </div>
