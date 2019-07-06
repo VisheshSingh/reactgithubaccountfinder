@@ -11,14 +11,14 @@ const Search = props => {
   const handleSubmit = e => {
     e.preventDefault();
     if (text === '') {
-      setAlert('Please type something', 'light');
+      setAlertMsg('Please type something', 'light');
     } else {
       searchUsers(text);
       setText('');
     }
   };
 
-  const { showClear, clearUsers, setAlert, searchUsers } = props;
+  const { showClear, clearUsers, setAlertMsg, searchUsers } = props;
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ const Search = props => {
 Search.propTypes = {
   searchUsers: PropTypes.func.isRequired,
   clearUsers: PropTypes.func.isRequired,
-  setAlert: PropTypes.func.isRequired
+  setAlertMsg: PropTypes.func.isRequired
 };
 
 export default Search;
