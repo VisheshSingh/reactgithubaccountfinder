@@ -1,8 +1,9 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
 import PropTypes from 'prop-types';
+import GithubContext from '../../context/github/githubContext';
 
 const User = props => {
   useEffect(() => {
@@ -11,6 +12,8 @@ const User = props => {
     // eslint-disable-next-line
   }, []);
 
+  const githubContext = useContext(GithubContext);
+  const { getUser, user, loading } = githubContext;
   const {
     name,
     avatar_url,
@@ -25,10 +28,10 @@ const User = props => {
     public_gists,
     public_repos,
     hireable
-  } = props.user;
+  } = user;
   // console.log(this.props);
 
-  const { loading, repos, getUser, getUserRepos } = props;
+  const { repos, getUserRepos } = props;
   if (loading) {
     return <Spinner />;
   }
@@ -105,10 +108,7 @@ const User = props => {
 };
 
 User.propTypes = {
-  loading: PropTypes.bool,
-  getUser: PropTypes.func.isRequired,
   getUserRepos: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired
 };
 
